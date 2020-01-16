@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace App\Providers;
 
+use App\Services\RouteAccessManagerService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app->singleton(RouteAccessManagerService::class);
     }
 
     /**
@@ -23,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->loadHelpers();
+    }
+
+    private function loadHelpers() {
+        include_once __DIR__ . '/../../helpers/route_access.php';
     }
 }
