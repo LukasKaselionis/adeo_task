@@ -37,7 +37,18 @@
                                     <td>{{ $product->base_price }}</td>
                                     <td>{{ $product->special_price }}</td>
                                     <td>{{ $product->created_at }}</td>
-                                    <td></td>
+                                    <td class="d-flex justify-content-between">
+                                 
+                                        <form class="d-inline"
+                                                action="{{ route('admin.product.destroy', ['product' => $product->id]) }}"
+                                                method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <input type="submit" onclick="return confirm('Are you sure?');"
+                                                   class="btn btn-sm btn-danger" name="deleteProduct"
+                                                   value="Delete">
+                                        </form>
+                                    </td>
                                 </tr>
 
                             @endforeach

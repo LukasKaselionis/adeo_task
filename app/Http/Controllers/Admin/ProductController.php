@@ -113,11 +113,14 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Product $product
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return RedirectResponse
      */
-    public function destroy(Product $product)
+    public function destroy(int $id): RedirectResponse
     {
-        //
+        $this->productService->destroyById($id);
+
+        return redirect()->route('admin.product.index')
+            ->with('status', 'Product deleted!');
     }
 }

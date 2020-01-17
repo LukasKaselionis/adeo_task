@@ -67,4 +67,12 @@ class ProductService
 
         return $product;
     }
+
+    /**
+     * @param int $id
+     */
+    public function destroyById(int $id)
+    {
+        $this->productRepository->delete($id);
+    }
 }
