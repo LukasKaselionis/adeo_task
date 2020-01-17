@@ -22,36 +22,24 @@
                         <a class="nav-link" href="{{ route('admin.login') }}">{{ __('Login') }}</a>
                     </li>
                 @else
-                    @if (can_access_any(['admin.administrator.index', 'admin.role.index']))
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ __('Admins Area') }} <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                @if (can_access('admin.administrator.index'))
-                                    <a class="dropdown-item" href="{{ route('admin.administrator.index') }}">
-                                        {{ __('Administrators') }}
-                                    </a>
-                                @endif
-                                @if (can_access('admin.role.index'))
-                                    <a class="dropdown-item" href="{{ route('admin.role.index') }}">
-                                        {{ __('Roles') }}
-                                    </a>
-                                @endif
-
-                            </div>
-                        </li>
-                    @endif
 
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
-
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            @if (can_access('admin.administrator.index'))
+                                <a class="dropdown-item" href="{{ route('admin.administrator.index') }}">
+                                    {{ __('Administrators') }}
+                                </a>
+                            @endif
+                            @if (can_access('admin.role.index'))
+                                <a class="dropdown-item" href="{{ route('admin.role.index') }}">
+                                    {{ __('Roles') }}
+                                </a>
+                            @endif
+
                             <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

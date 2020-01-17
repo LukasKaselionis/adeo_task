@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">{{ __('Admin edit') }}</div>
+                    <div class="card-header bg-primary">{{ __('Admin edit') }}</div>
                     <div class="card-body">
                         <form action="{{ route('admin.administrator.update', ['admin' => $admin->id]) }}" method="post">
                             @csrf
