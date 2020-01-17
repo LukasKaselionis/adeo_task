@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('SKU')->unique();
-            $table->boolean('status');
+            $table->boolean('is_enable')->default(false);
             $table->float('base_price', 8,2);
             $table->float('special_price', 8,2);
             $table->string('cover')->nullable();

@@ -39,6 +39,11 @@
                                     {{ __('Roles') }}
                                 </a>
                             @endif
+                            @if (can_access('admin.product.index'))
+                                <a class="dropdown-item" href="{{ route('admin.product.index') }}">
+                                    {{ __('Product') }}
+                                </a>
+                            @endif
 
                             <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                onclick="event.preventDefault();

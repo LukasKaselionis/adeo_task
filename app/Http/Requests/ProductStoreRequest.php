@@ -1,0 +1,89 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+/**
+ * Class ProductStoreRequest
+ * @package App\Http\Requests
+ */
+class ProductStoreRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'title' => 'required|string|min:5|max:191',
+            'sku' => 'required|string|min:3|max:10',
+            'is_enable' => 'required|boolean',
+            'base_price' => 'required|numeric',
+            'special_price' => 'required|numeric',
+            'description' => 'required|string|min:10',
+        ];
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return strip_tags($this->input('title'));
+    }
+
+    /**
+     * @return string
+     */
+    public function getSKU(): string
+    {
+        return strip_tags($this->input('sku'));
+    }
+
+    /**
+     * @return bool
+     */
+    public function getStatus(): bool
+    {
+        return boolval($this->input('is_enable'));
+    }
+
+    /**
+     * @return float
+     */
+    public function getBasePrice(): float
+    {
+        return floatval($this->input('base_price'));
+    }
+
+    /**
+     * @return float
+     */
+    public function getSpecialPrice(): float
+    {
+        return floatval($this->input('special_price'));
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return strip_tags($this->input('description'));
+    }
+}

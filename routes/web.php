@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +64,8 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
                 Route::put('{role}', 'RoleController@update')
                     ->name('update');
             });
+
+            Route::resource('product', 'ProductController');
         });
     });
 });
