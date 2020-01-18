@@ -38,7 +38,14 @@
                                     <td>{{ $product->special_price }}</td>
                                     <td>{{ $product->created_at }}</td>
                                     <td class="d-flex justify-content-between">
-                                 
+                                        <a class="btn btn-sm btn-primary" href="{{
+                                        route('admin.product.edit', ['product' => $product->id])
+                                        }}">
+                                            Edit
+                                        </a>
+                                        <a class="btn btn-sm btn-success"
+                                           href="{{ route('admin.product.show', ['product' => $product->id]) }}">Show</a>
+
                                         <form class="d-inline"
                                                 action="{{ route('admin.product.destroy', ['product' => $product->id]) }}"
                                                 method="post">

@@ -70,6 +70,38 @@ class ProductService
 
     /**
      * @param int $id
+     * @param string $title
+     * @param string $sku
+     * @param bool $status
+     * @param float $base_price
+     * @param float $special_price
+     * @param string $description
+     * @return int
+     */
+    public function updateById(
+        int $id,
+        string $title,
+        string $sku,
+        bool $status,
+        float $base_price,
+        float $special_price,
+        string $description
+    ): int
+    {
+        $updated = $this->productRepository->update([
+            'title' => $title,
+            'sku' => $sku,
+            'is_enable' => $status,
+            'base_price' => $base_price,
+            'special_price' => $special_price,
+            'description' => $description
+        ], $id);
+
+        return $updated;
+    }
+
+    /**
+     * @param int $id
      */
     public function destroyById(int $id)
     {

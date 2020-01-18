@@ -34,25 +34,27 @@
 
                             <div class="form-group">
                                 <label for="title">{{ __('Title') }}</label>
-                                <input type="text" id="title" name="title" class="form-control"
+                                <input type="text" id="title" name="title" class="form-control" placeholder="Product 1"
                                        value="{{ old('title') }}">
                             </div>
 
                             <div class="form-group">
                                 <label for="sku">{{ __('SKU') }}</label>
-                                <input type="text" id="sku" name="sku" class="form-control"
+                                <input type="text" id="sku" name="sku" class="form-control" placeholder="XXX-XXX"
                                        value="{{ old('sku') }}">
                             </div>
 
                             <div class="form-group">
                                 <label for="base_price">{{ __('Base price') }}</label>
                                 <input type="number" id="base_price" name="base_price" class="form-control" step="0.01"
+                                       placeholder="1.99"
                                        value="{{ old('base_price') }}">
                             </div>
 
                             <div class="form-group">
                                 <label for="special_price">{{ __('Special price') }}</label>
                                 <input type="number" id="special_price" name="special_price" class="form-control"
+                                       placeholder="1.49"
                                        step="0.01"
                                        value="{{ old('special_price') }}">
                             </div>
@@ -60,14 +62,16 @@
                             <div class="form-group">
                                 <label for="description">{{ __('Description') }}</label>
                                 <textarea style="width: 100%" name="description"
-                                          id="description">{{ old('description') }}</textarea>
+                                          id="description"
+                                          placeholder="Describe product here..."
+                                >{{ old('description') }}</textarea>
                             </div>
 
                             <div class="form-group">
-                                <label>Is product active?</label>
+                                <label for="is_enable">Is product active?</label>
                                 <select class="form-control" name="is_enable" id="is_enable">
-                                    <option value="1" selected>Enabled</option>
-                                    <option value="0">Disabled</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
                                 </select>
                             </div>
 

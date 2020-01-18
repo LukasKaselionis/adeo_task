@@ -79,35 +79,50 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Product $product
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @return View
      */
-    public function show(Product $product)
+    public function show(Product $product): View
     {
-        //
+        return view('admin.product.show', [
+            'product' => $product
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Product $product
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @return View
      */
-    public function edit(Product $product)
+    public function edit(Product $product): View
     {
-        //
+        return view('admin.product.edit', [
+            'product' => $product,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Product $product
-     * @return \Illuminate\Http\Response
+     * @param ProductStoreRequest $request
+     * @param int $id
+     * @return RedirectResponse
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductStoreRequest $request, int $id): RedirectResponse
     {
-        //
+        $this->productService->updateById(
+            $id,
+            $request->getTitle(),
+            $request->getSKU(),
+            $request->getStatus(),
+            $request->getBasePrice(),
+            $request->getSpecialPrice(),
+            $request->getDescription()
+        );
+
+        return redirect()->route('admin.product.index')
+            ->with('status', 'Product updated!');
     }
 
     /**
