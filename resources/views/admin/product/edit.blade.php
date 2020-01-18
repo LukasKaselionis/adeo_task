@@ -61,10 +61,21 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="cover">{{ __('Cover') }}</label>
+                                @if ($product->cover)
+                                    <img width="50" src="{{ asset('storage/'.$product->cover) }}">
+                                    <input type="checkbox" name="deleteCover" value="1"> Delete cover
+                                @endif
+                                <input class="form-control-file" type="file" id="cover" name="cover" value="">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="is_enable">Is product active?</label>
                                 <select class="form-control" name="is_enable" id="is_enable">
-                                    <option value="1" @if ($product->is_enable == '1') selected="selected" @endif>Yes</option>
-                                    <option value="0" @if ($product->is_enable == '0') selected="selected" @endif>No</option>
+                                    <option value="1" @if ($product->is_enable == '1') selected="selected" @endif>Yes
+                                    </option>
+                                    <option value="0" @if ($product->is_enable == '0') selected="selected" @endif>No
+                                    </option>
                                 </select>
                             </div>
 

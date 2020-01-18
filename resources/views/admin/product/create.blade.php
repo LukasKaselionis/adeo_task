@@ -68,6 +68,11 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="cover">{{ __('Cover') }}</label>
+                                <input class="form-control-file" type="file" id="cover" name="cover" value="">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="is_enable">Is product active?</label>
                                 <select class="form-control" name="is_enable" id="is_enable">
                                     <option value="1">Yes</option>

@@ -27,7 +27,7 @@
                                     <td>
                                         @if(can_access('admin.administrator.edit'))
                                             <a href="{{ route('admin.administrator.edit', ['admin' => $admin->id]) }}"
-                                               class="btn btn-sm btn-outline-success">
+                                               class="btn btn-sm btn-success">
                                                 {{ __('Edit') }}
                                             </a>
                                         @endif

@@ -8,6 +8,8 @@ namespace App\Services;
 use App\Product;
 use App\Repositories\ProductRepository;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class ProductService
@@ -15,6 +17,7 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
  */
 class ProductService
 {
+    const FILE_DIR = 'product';
     /**
      * @var ProductRepository
      */
@@ -44,6 +47,7 @@ class ProductService
      * @param float $base_price
      * @param float $special_price
      * @param string $description
+     * @param UploadedFile|null $cover
      * @return Product
      */
     public function createNewProduct(
@@ -52,7 +56,8 @@ class ProductService
         bool $status,
         float $base_price,
         float $special_price,
-        string $description
+        string $description,
+        ?UploadedFile $cover = null
     ): Product
     {
         /** @var Product $product */
@@ -62,8 +67,14 @@ class ProductService
             'is_enable' => $status,
             'base_price' => $base_price,
             'special_price' => $special_price,
-            'description' => $description
+            'description' => $description,
         ]);
+
+        if ($cover !== null) {
+            $uploadedFile = $this->uploadImage($cover, $product->id);
+            $product->cover = $uploadedFile;
+            $product->save();
+        }
 
         return $product;
     }
@@ -76,6 +87,8 @@ class ProductService
      * @param float $base_price
      * @param float $special_price
      * @param string $description
+     * @param int|null $deleteCover
+     * @param UploadedFile|null $cover
      * @return int
      */
     public function updateById(
@@ -85,16 +98,31 @@ class ProductService
         bool $status,
         float $base_price,
         float $special_price,
-        string $description
+        string $description,
+        int $deleteCover = null,
+        ?UploadedFile $cover = null
     ): int
     {
+        $product = $this->productRepository->makeQuery()->findOrFail($id);
+
+        $uploadedFile = $product->cover;
+        if ($deleteCover !== null) {
+            Storage::delete($product->cover);
+            $uploadedFile = null;
+        }
+        if ($cover !== null) {
+            $uploadedFile = $this->uploadImage($cover, $product->id);
+        }
+
+
         $updated = $this->productRepository->update([
             'title' => $title,
             'sku' => $sku,
             'is_enable' => $status,
             'base_price' => $base_price,
             'special_price' => $special_price,
-            'description' => $description
+            'description' => $description,
+            'cover' => $uploadedFile
         ], $id);
 
         return $updated;
@@ -103,8 +131,24 @@ class ProductService
     /**
      * @param int $id
      */
-    public function destroyById(int $id)
+    public
+    function destroyById(int $id)
     {
         $this->productRepository->delete($id);
     }
+
+    /**
+     * @param UploadedFile|null $image
+     * @param int $productId
+     * @return string|null
+     */
+    private
+    function uploadImage(?UploadedFile $image, int $productId): ?string
+    {
+        if ($image === null) {
+            return null;
+        }
+        return $image->store(self::FILE_DIR . '/' . $productId);
+    }
+
 }

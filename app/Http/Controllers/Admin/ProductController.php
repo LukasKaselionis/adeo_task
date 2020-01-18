@@ -8,7 +8,6 @@ use App\Http\Requests\ProductStoreRequest;
 use App\Product;
 use App\Services\ProductService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
 
@@ -69,7 +68,9 @@ class ProductController extends Controller
             $request->getStatus(),
             $request->getBasePrice(),
             $request->getSpecialPrice(),
-            $request->getDescription()
+            $request->getDescription(),
+            $request->getDeleteCoverOption(),
+            $request->getCover()
         );
 
         return redirect()->route('admin.product.index')
@@ -118,7 +119,9 @@ class ProductController extends Controller
             $request->getStatus(),
             $request->getBasePrice(),
             $request->getSpecialPrice(),
-            $request->getDescription()
+            $request->getDescription(),
+            $request->getDeleteCoverOption(),
+            $request->getCover()
         );
 
         return redirect()->route('admin.product.index')

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\UploadedFile;
 
 /**
  * Class ProductStoreRequest
@@ -36,6 +37,7 @@ class ProductStoreRequest extends FormRequest
             'base_price' => 'required|numeric',
             'special_price' => 'required|numeric',
             'description' => 'required|string|min:10',
+            'cover' => 'nullable|image'
         ];
     }
 
@@ -85,5 +87,25 @@ class ProductStoreRequest extends FormRequest
     public function getDescription(): string
     {
         return strip_tags($this->input('description'));
+    }
+
+    /**
+     * @return UploadedFile|null
+     */
+    public function getCover(): ?UploadedFile
+    {
+        return $this->file('cover');
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getDeleteCoverOption(): ?int
+    {
+        $deleteCover = $this->input('deleteCover');
+        if ($deleteCover === null) {
+            return null;
+        }
+        return (int)$deleteCover;
     }
 }
