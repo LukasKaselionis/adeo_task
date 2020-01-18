@@ -69,7 +69,6 @@ class ProductController extends Controller
             $request->getBasePrice(),
             $request->getSpecialPrice(),
             $request->getDescription(),
-            $request->getDeleteCoverOption(),
             $request->getCover()
         );
 

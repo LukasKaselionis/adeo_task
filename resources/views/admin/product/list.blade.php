@@ -14,7 +14,7 @@
 
                     <div class="card-body">
                         @if (session('status'))
-                            <div class="alert alert-success" role="alert">
+                            <div class="alert-success breadcrumb" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
@@ -47,8 +47,8 @@
                                            href="{{ route('admin.product.show', ['product' => $product->id]) }}">Show</a>
 
                                         <form class="d-inline"
-                                                action="{{ route('admin.product.destroy', ['product' => $product->id]) }}"
-                                                method="post">
+                                              action="{{ route('admin.product.destroy', ['product' => $product->id]) }}"
+                                              method="post">
                                             @csrf
                                             @method('delete')
                                             <input type="submit" onclick="return confirm('Are you sure?');"
@@ -60,8 +60,8 @@
 
                             @endforeach
 
-                            <tfoot>{{ $products->links() }}</tfoot>
                         </table>
+                        {{ $products->links() }}
                     </div>
                 </div>
             </div>

@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Services;
 
 
+use App\Http\Requests\ProductStoreRequest;
 use App\Product;
 use App\Repositories\ProductRepository;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -37,7 +39,7 @@ class ProductService
      */
     public function getPaginatedData(): LengthAwarePaginator
     {
-        return $this->productRepository->paginate();
+        return $this->productRepository->paginate(5);
     }
 
     /**
@@ -131,8 +133,7 @@ class ProductService
     /**
      * @param int $id
      */
-    public
-    function destroyById(int $id)
+    public function destroyById(int $id)
     {
         $this->productRepository->delete($id);
     }
@@ -142,8 +143,7 @@ class ProductService
      * @param int $productId
      * @return string|null
      */
-    private
-    function uploadImage(?UploadedFile $image, int $productId): ?string
+    private function uploadImage(?UploadedFile $image, int $productId): ?string
     {
         if ($image === null) {
             return null;

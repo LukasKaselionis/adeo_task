@@ -10,6 +10,8 @@
                         <img src="{{ asset('storage/'.$product->cover) }}"
                              alt="{{ $product->title }}"
                              class="card-img-top"
+                             width="500"
+                             height="500"
                         >
                     @endif
                     <div class="card-body text-center">
