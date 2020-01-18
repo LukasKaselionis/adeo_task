@@ -27,7 +27,7 @@
                                     <td>{{ $role->full_access }}</td>
                                     <td>{{ $role->description }}</td>
                                     <td>
-                                        <a href="{{ route('admin.role.edit', ['role' => $role->id]) }}" class="btn btn-sm btn-outline-success">
+                                        <a href="{{ route('admin.role.edit', ['role' => $role->id]) }}" class="btn btn-sm btn-success">
                                             {{ __('Edit') }}
                                         </a>
                                     </td>

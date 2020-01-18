@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="navbar-brand" href="{{ url('/admin') }}">
             {{ config('app.name', 'Laravel') }} Admin panel
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -37,6 +37,11 @@
                             @if (can_access('admin.role.index'))
                                 <a class="dropdown-item" href="{{ route('admin.role.index') }}">
                                     {{ __('Roles') }}
+                                </a>
+                            @endif
+                            @if (can_access('admin.product.index'))
+                                <a class="dropdown-item" href="{{ route('admin.product.index') }}">
+                                    {{ __('Product') }}
                                 </a>
                             @endif
 

@@ -34,7 +34,7 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="submit" class="btn btn-sm btn-outline-primary">
+                                <input type="submit" class="btn btn-sm btn-primary">
                             </div>
                         </form>
                     </div>
