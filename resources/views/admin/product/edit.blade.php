@@ -9,13 +9,13 @@
                     <div class="card-body">
 
                         @if (session('status'))
-                            <div class="alert alert-success" role="alert">
+                            <div class="alert-success breadcrumb" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
 
                         @if ($errors->any())
-                            <div class="alert alert-danger">
+                            <div class="alert-danger breadcrumb">
                                 <ul>
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
