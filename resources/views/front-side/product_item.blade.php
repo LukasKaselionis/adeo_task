@@ -26,8 +26,11 @@
                     </div>
                     <p class="text-muted">{{ $product->SKU }}</p>
                     <p>{{ $product->description }}</p>
-                    <span>€{{ $product->base_price }}</span><br>
-                    <span>€{{ $product->special_price }}</span>
+                    <h4 class="product_base_price m-0">Base price: €{{ $product->base_price }}</h4>
+                    <span class="taxes text-muted">
+                            VAT: €{{ \App\Helpers\calculate::calculateVAT($product->base_price) }}</span>
+                    <h4 class="product_final_price mb-2">Final price:
+                        €{{ \App\Helpers\calculate::calculateFinalPrice($product->base_price) }}</h4>
                 </div>
             </div>
             <a class="btn btn-block btn-primary mt-2" href="{{ route('home') }}">Close</a>

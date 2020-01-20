@@ -22,9 +22,27 @@
                         <p class="product_description">
                             {{ Str::words($product->description, 50, '...' ) }}
                         </p>
-                        <h3 class="product_base_price">€{{ $product->base_price }}</h3>
-                        <h3 class="product_special_price">€{{ $product->special_price }}</h3>
-                        <button class="btn btn-primary">Buy now</button>
+                        <h4 class="product_base_price m-0">Base price: €{{ $product->base_price }}</h4>
+                        <span class="taxes text-muted">
+                            VAT: €{{ \App\Helpers\calculate::calculateVAT($product->base_price, 0.21) }}</span>
+                        @if($product->special_price >= 0.01)
+                            <h4 class="product_final_price mb-2">
+                                <del>Final price:
+                                    €{{ \App\Helpers\calculate::calculateFinalPrice($product->base_price, 0.21) }}
+                                </del>
+                            </h4>
+                            <h4 class="product_final_price mb-2">
+                                Price with discount:
+                                €{{ \App\Helpers\calculate::calculateFinalPriceWithDiscount($product->base_price, 0.21, 0.15) }}
+                            </h4>
+                            <p>You save:
+                                € {{ \App\Helpers\calculate::calculateFinalPrice($product->base_price, 0.21) - \App\Helpers\calculate::calculateFinalPriceWithDiscount($product->base_price, 0.21, 0.15) }}</p>
+                        @else
+                            <h4 class="product_final_price mb-2">Final price:
+                                €{{ \App\Helpers\calculate::calculateFinalPrice($product->base_price, 0.21) }}
+                            </h4>
+                        @endif
+                        <button class="btn btn-primary col-6">Buy now</button>
                         <a href="{{ route('front.product.show', ['product' => $product->id]) }}">
                             <button class="btn btn-primary">Details</button>
                         </a>
