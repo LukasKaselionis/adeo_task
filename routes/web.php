@@ -23,7 +23,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'Front\HomeController@index')->name('home');
+Route::get('/product/{product}', 'Front\ProductController@show')->name('front.product.show');
 
 // ADMIN ROUTES
 
