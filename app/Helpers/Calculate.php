@@ -27,9 +27,11 @@ class calculate
 
     public static function calculateFinalPriceWithDiscount(float $base_price, float $VAT, float $discount)
     {
-        $product_discount = ($base_price * $VAT) + $base_price;
+        $priceWithVAT = ($base_price * $VAT) + $base_price;
 
-        $final_price = ($product_discount * $discount) + $base_price;
+        $product_discount = ($priceWithVAT * $discount);
+
+        $final_price = $priceWithVAT - $product_discount;
 
         return round($final_price, 2);
     }
