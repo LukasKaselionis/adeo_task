@@ -24,7 +24,7 @@
                                 <th>Title</th>
                                 <th>SKU</th>
                                 <th>Base price</th>
-                                <th>Special price</th>
+                                <th>Discount</th>
                                 <th>Created</th>
                                 <th>Actions</th>
                             </tr>
@@ -35,7 +35,7 @@
                                     <td>{{ $product->title }}</td>
                                     <td>{{ $product->SKU }}</td>
                                     <td>{{ $product->base_price }}</td>
-                                    <td>{{ $product->special_price }}</td>
+                                    <td>{{ $product->discount * 100 }}%</td>
                                     <td>{{ $product->created_at }}</td>
                                     <td class="d-flex justify-content-between">
                                         <a class="btn btn-sm btn-primary" href="{{

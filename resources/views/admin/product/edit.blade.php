@@ -49,9 +49,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="special_price">{{ __('Base price') }}</label>
-                                <input type="number" id="special_price" name="special_price" class="form-control"
-                                       value="{{ old('special_price', $product->special_price) }}">
+                                <label for="discount">{{ __('Discount') }}</label>
+                                <input type="number" id="discount" name="discount" class="form-control" step="0.01"
+                                       value="{{ old('discount', $product->discount) }}">
                             </div>
 
                             <div class="form-group">

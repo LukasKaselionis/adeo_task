@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace App\Services;
 
 
-use App\Http\Requests\ProductStoreRequest;
 use App\Product;
 use App\Repositories\ProductRepository;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -47,7 +45,7 @@ class ProductService
      * @param string $sku
      * @param bool $status
      * @param float $base_price
-     * @param float $special_price
+     * @param float $discount
      * @param string $description
      * @param UploadedFile|null $cover
      * @return Product
@@ -57,7 +55,7 @@ class ProductService
         string $sku,
         bool $status,
         float $base_price,
-        float $special_price,
+        float $discount,
         string $description,
         ?UploadedFile $cover = null
     ): Product
@@ -68,7 +66,7 @@ class ProductService
             'sku' => $sku,
             'is_enable' => $status,
             'base_price' => $base_price,
-            'special_price' => $special_price,
+            'discount' => $discount,
             'description' => $description,
         ]);
 
@@ -87,7 +85,7 @@ class ProductService
      * @param string $sku
      * @param bool $status
      * @param float $base_price
-     * @param float $special_price
+     * @param float $discount
      * @param string $description
      * @param int|null $deleteCover
      * @param UploadedFile|null $cover
@@ -99,7 +97,7 @@ class ProductService
         string $sku,
         bool $status,
         float $base_price,
-        float $special_price,
+        float $discount,
         string $description,
         int $deleteCover = null,
         ?UploadedFile $cover = null
@@ -122,7 +120,7 @@ class ProductService
             'sku' => $sku,
             'is_enable' => $status,
             'base_price' => $base_price,
-            'special_price' => $special_price,
+            'discount' => $discount,
             'description' => $description,
             'cover' => $uploadedFile
         ], $id);

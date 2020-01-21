@@ -52,11 +52,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="special_price">{{ __('Special price') }}</label>
-                                <input type="number" id="special_price" name="special_price" class="form-control"
-                                       placeholder="1.49"
-                                       step="0.01"
-                                       value="{{ old('special_price') }}">
+                                <label for="discount">{{ __('Discount') }}</label>
+                                <input type="number" id="discount" name="discount" class="form-control" step="0.01"
+                                       value="{{ old('discount') }}">
                             </div>
 
                             <div class="form-group">

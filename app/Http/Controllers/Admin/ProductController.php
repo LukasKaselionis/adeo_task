@@ -67,7 +67,7 @@ class ProductController extends Controller
             $request->getSku(),
             $request->getStatus(),
             $request->getBasePrice(),
-            $request->getSpecialPrice(),
+            $request->getDiscount(),
             $request->getDescription(),
             $request->getCover()
         );
@@ -117,7 +117,7 @@ class ProductController extends Controller
             $request->getSKU(),
             $request->getStatus(),
             $request->getBasePrice(),
-            $request->getSpecialPrice(),
+            $request->getDiscount(),
             $request->getDescription(),
             $request->getDeleteCoverOption(),
             $request->getCover()

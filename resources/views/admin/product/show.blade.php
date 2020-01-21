@@ -18,7 +18,8 @@
                         <h3 class="card-title">{{ $product->title }}</h3>
                         <h5 class="card-title">{{ $product->SKU }}</h5>
                         <p class="card-text">{{ $product->description }}</p>
-                        <p class="card-text">{{ $product->base_price }}$ - {{ $product->special_price }}$</p>
+                        <p class="card-text">{{ $product->base_price }}$</p>
+                        <p class="card-text">{{ $product->discount * 100 }}%</p>
                     </div>
                     <div class="card-footer">
                         <a class="btn btn-md btn-dark" href="{{ route('admin.product.index') }}">Close</a>

@@ -32,10 +32,10 @@ class ProductStoreRequest extends FormRequest
     {
         return [
             'title' => 'required|string|min:5|max:191',
-            'sku' => 'required|string|min:3|max:10',
+            'sku' => 'required|string|min:7|max:7',
             'is_enable' => 'required|boolean',
             'base_price' => 'required|numeric',
-            'special_price' => 'required|numeric',
+            'discount' => 'nullable|numeric|between:0.01,1.00',
             'description' => 'required|string|min:10',
             'cover' => 'nullable|image'
         ];
@@ -76,9 +76,9 @@ class ProductStoreRequest extends FormRequest
     /**
      * @return float
      */
-    public function getSpecialPrice(): float
+    public function getDiscount(): ?float
     {
-        return floatval($this->input('special_price'));
+        return floatval($this->input('discount'));
     }
 
     /**

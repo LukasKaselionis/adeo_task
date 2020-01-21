@@ -20,7 +20,7 @@ class Product extends Model
         'sku',
         'is_enable',
         'base_price',
-        'special_price',
+        'discount',
         'description'
     ];
 }

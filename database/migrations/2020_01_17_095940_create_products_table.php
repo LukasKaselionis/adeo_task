@@ -21,7 +21,8 @@ class CreateProductsTable extends Migration
             $table->string('SKU')->unique();
             $table->boolean('is_enable')->default(false);
             $table->float('base_price', 8,2);
-            $table->float('special_price', 8,2);
+            $table->float('tax')->default(0.21);
+            $table->float('discount', 8, 2)->nullable();
             $table->string('cover')->nullable();
             $table->text('description');
             $table->timestamps();
