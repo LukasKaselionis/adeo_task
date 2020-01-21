@@ -35,7 +35,7 @@ class ProductStoreRequest extends FormRequest
             'sku' => 'required|string|min:7|max:7',
             'is_enable' => 'required|boolean',
             'base_price' => 'required|numeric',
-            'discount' => 'nullable|numeric|between:0.01,1.00',
+            'discount' => 'nullable|numeric|between:0,1.00',
             'description' => 'required|string|min:10',
             'cover' => 'nullable|image'
         ];

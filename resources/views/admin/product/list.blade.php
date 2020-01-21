@@ -25,17 +25,24 @@
                                 <th>SKU</th>
                                 <th>Base price</th>
                                 <th>Discount</th>
+                                <th>Is enabled?</th>
                                 <th>Created</th>
                                 <th>Actions</th>
                             </tr>
 
                             @foreach($products as $product)
-
                                 <tr>
                                     <td>{{ $product->title }}</td>
                                     <td>{{ $product->SKU }}</td>
                                     <td>{{ $product->base_price }}</td>
                                     <td>{{ $product->discount * 100 }}%</td>
+                                    <td>
+                                        @if($product->is_enable > 0)
+                                            Yes
+                                        @else
+                                            No
+                                        @endif
+                                    </td>
                                     <td>{{ $product->created_at }}</td>
                                     <td class="d-flex justify-content-between">
                                         <a class="btn btn-sm btn-primary" href="{{

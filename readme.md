@@ -13,7 +13,7 @@ Simple product catalog application with basic management and price calculation c
 - Run `cp .env.example .env` command.
 - Run `php artisan key:generate` command.
 - Fill `db` credentials on `.env` file.
-- Run `php artisan migrate` command.
+- Run `php artisan migrate --seed` command.
 - Run `php artisan storage:link` command.
 
 P.S.: if you don't use virtual machine, run `php artisan serve` command to run virtual server.
