@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 use App\Admin;
 use App\Role;
@@ -18,7 +18,8 @@ class FirstAdminSeeder extends Seeder
      *
      * @return void
      */
-    public function run() {
+    public function run()
+    {
         $roleId = $this->createRole(
             'Super admin',
             [],
@@ -33,6 +34,12 @@ class FirstAdminSeeder extends Seeder
             'Admin'
         );
         $admin->roles()->sync([$roleId]);
+
+        $this->command->comment('First admin is: 
+        email: admin@admin.com,
+        password: secret,
+        name: Admin
+        ');
     }
 
     /**
@@ -42,7 +49,8 @@ class FirstAdminSeeder extends Seeder
      *
      * @return Admin|Model
      */
-    private function createAdmin(string $email, string $password, string $name = ''): Admin {
+    private function createAdmin(string $email, string $password, string $name = ''): Admin
+    {
         return Admin::query()
             ->create([
                 'name' => $name,
@@ -64,7 +72,8 @@ class FirstAdminSeeder extends Seeder
         array $accessibleRoutes = [],
         ?string $description = null,
         bool $fullAccess = false
-    ): int {
+    ): int
+    {
         $role = Role::query()->create([
             'name' => $name,
             'full_access' => $fullAccess,

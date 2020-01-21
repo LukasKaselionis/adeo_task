@@ -54,6 +54,7 @@
                             <div class="form-group">
                                 <label for="discount">{{ __('Discount') }}</label>
                                 <input type="number" id="discount" name="discount" class="form-control" step="0.01"
+                                       placeholder="0.15"
                                        value="{{ old('discount') }}">
                             </div>
 
